@@ -1,0 +1,15 @@
+<div class="p-row">
+  <div class="p-col-12">
+    <h1>
+      <p-button
+              type="button"
+              styleClass="p-button-outlined p-button-secondary margin"
+              icon="pi pi-angle-left"
+              *ngIf="retour"
+              (click)="link_returToParent()"
+              title="retour"></p-button>
+      {{ titre }}
+    </h1>
+    <p *ngIf="description != '' ">{{description}}</p>
+  </div>
+</div>

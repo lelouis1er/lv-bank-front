@@ -9,7 +9,7 @@ import { LoaderService } from './services/loader.service';
 })
 export class AppComponent implements OnInit{
   title = 'banque';
-  showLoader : boolean = true;
+  showLoader : any = null;
 
   constructor(
     private primengConfig: PrimeNGConfig,

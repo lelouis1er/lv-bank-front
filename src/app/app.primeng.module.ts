@@ -1,6 +1,7 @@
 import { NgModule } from "@angular/core";
 
 import { ButtonModule } from "primeng/button";
+import {BreadcrumbModule} from "primeng/breadcrumb"
 import { CardModule } from "primeng/card";
 import { InputTextModule } from "primeng/inputtext";
 import { PasswordModule } from "primeng/password";
@@ -13,11 +14,15 @@ import { SidebarModule } from "primeng/sidebar";
 import { InputTextareaModule } from "primeng/inputtextarea";
 import { DynamicDialogModule } from "primeng/dynamicdialog"
 import {ProgressSpinnerModule} from "primeng/progressspinner"
+import {DividerModule} from "primeng/divider"
+import {TabViewModule} from "primeng/tabview"
 
 @NgModule({
   exports: [
     ButtonModule,
+    BreadcrumbModule,
     CardModule,
+    DividerModule,
     DynamicDialogModule,
     InputTextModule,
     InputTextareaModule,
@@ -28,6 +33,7 @@ import {ProgressSpinnerModule} from "primeng/progressspinner"
     SidebarModule,
     TableModule,
     ToastModule,
+    TabViewModule,
     ProgressSpinnerModule
   ]
 })

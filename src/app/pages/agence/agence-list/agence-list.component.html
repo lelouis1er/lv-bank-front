@@ -1,0 +1,48 @@
+<app-header-section titre="Les Agences"></app-header-section>
+
+<div class="prow">
+  <div class="p-col-12">
+    <p-button icon="pi pi-plus" label="Nouveau" (onClick)="link_onCreate()"></p-button>
+    <p-button icon="pi pi-refresh" label="Actualiser" (onClick)="actualiser()" class="p-button-secondary align-right"></p-button>
+  </div>
+</div>
+
+<div class="p-row">
+  <div class="p-col-12">
+
+    <p-panel header="Employees List">
+      <div class="">
+        <div class="p-g-10 p-sm-8">
+          <label>Nombre de ligne : </label>
+          <input type="text" pInputText [(ngModel)]="pageSize">
+        </div>
+      </div>
+      <br />
+      <p-table [value]="list_agences" [paginator]="true" [rows]="pageSize">
+        <ng-template pTemplate="header">
+          <tr>
+            <th *ngFor="let col of cols">
+              {{col.header}}
+            </th>
+            <th>
+              Opérations
+            </th>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-employee>
+          <tr>
+            <td *ngFor="let col of cols, let i on index">
+
+              {{list_agences[col.field]}}
+
+            </td>
+            <td>
+
+            </td>
+          </tr>
+        </ng-template>
+      </p-table>
+    </p-panel>
+
+  </div>
+</div>

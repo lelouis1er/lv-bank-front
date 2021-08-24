@@ -1,0 +1,65 @@
+<app-header-section [titre]="'Creation d\'une Agence'" [retour]="true" [description]="'Veuillez remplir le formulaire de creation d\'une nouvelle agence.
+                                      \nVeuillez remplir les points requis !'">
+</app-header-section>
+
+
+<div class="p-row">
+  <div class="p-col-12">
+
+    <form [formGroup]="agenceForm" (ngSubmit)="on_submit()">
+
+      <p-card>
+
+        <p-tabView>
+          <p-tabPanel header="Informations de base">
+
+            <div class="p-row">
+              <div class="p-col-12">
+
+                <div class="p-fluid">
+                  <div class="p-field">
+                    <label for="code"> Code : </label>
+                    <input id="code" type="text" pInputText formControlName="code"/>
+                  </div>
+                </div>
+
+                <div class="p-fluid">
+                  <div class="p-field">
+                    <label for="libelle"> Libelle : </label>
+                    <input id="libelle" type="text" pInputText formControlName="libelle"/>
+                  </div>
+                </div>
+
+                <div class="p-fluid">
+                  <div class="p-field">
+                    <label for="adresse"> Adresse : </label>
+                    <input id="adresse" type="text" pInputTextarea formControlName="adresse"/>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+
+          </p-tabPanel>
+
+
+          <p-tabPanel header="Informations supplémentaires">
+            your content
+          </p-tabPanel>
+        </p-tabView>
+
+      </p-card>
+
+      <br />
+
+      <p-button type="reset" icon="pi pi-refresh" label="Reset"
+        styleClass="p-button-raised p-button-secondary align-left margin"></p-button>
+      <p-button type="button" icon="pi pi-times" label="Annuler"
+        styleClass="p-button-raised p-button-danger align-left"></p-button>
+      <p-button type="submit" icon="pi pi-check" label="Enregistrer" styleClass="p-button-raised align-right">
+      </p-button>
+
+    </form>
+
+  </div>
+</div>

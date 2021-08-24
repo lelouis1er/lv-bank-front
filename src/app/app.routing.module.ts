@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AgenceModule } from 'src/app/pages/agence/agence.module';
 import { TemplateComponent } from './components/template.component';
 import { AuthGarde } from './gards/auth.garde';
-import { LoginComponent } from './pages/login/login.component';
 
 const routes: Routes = [
   {
@@ -12,16 +12,22 @@ const routes: Routes = [
   {
     path: 'main',
     component: TemplateComponent,
-    children: [{
-      path: 'dashboard',
-      loadChildren: () => import('src/app/pages/dashboard/dashboard.module').then(m => m.DashboardModule),
-      canActivate: [AuthGarde]
-    },
+    children: [
+      {
+        path: 'dashboard',
+        loadChildren: () => import('src/app/pages/dashboard/dashboard.module').then(m => m.DashboardModule),
+        canActivate: [AuthGarde]
+      },
+      {
+        path : 'crm/agence',
+        loadChildren : () => import('src/app/pages/agence/agence.module').then(m=>AgenceModule),
+        canActivate:[AuthGarde]
+      }
     ]
   },
   {
-    path: 'login',
-    component: LoginComponent,
+    path: '',
+    redirectTo: 'login',
     pathMatch: 'full'
   }
 ];

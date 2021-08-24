@@ -1,17 +1,10 @@
 export class CustomerMenuItem {
 
-  Label: string;
-  Icon: string;
-  RouterLink: string;
-  Childs: CustomerMenuItem[];
-  IsChildVisible: boolean;
-
-  constructor() {
-    this.Label = '';
-    this.Icon = '';
-    this.RouterLink = '';
-    this.Childs = [];
-    this.IsChildVisible = false;
+  constructor(public Label: string,
+              public Icon: string,
+              public RouterLink: string | null,
+              public Childs: CustomerMenuItem[] | null,
+              public IsChildVisible: boolean) {
   }
 
 }

@@ -3,13 +3,13 @@ import { ApplicationStateService } from "../services/application-state.service";
 import { MenuDataService } from "../services/menu-data.service";
 
 @Component({
-  selector: 'template',
+  selector: 'app-template',
   templateUrl: './template.component.html',
   styleUrls: ['./template.component.css']
 })
 export class TemplateComponent implements OnInit {
 
-  isMenuVisible: boolean = false;
+  isMenuVisible: boolean = true;
 
   constructor(
     private menuDataService: MenuDataService,

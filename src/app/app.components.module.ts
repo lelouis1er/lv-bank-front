@@ -1,13 +1,15 @@
 import { NgModule } from "@angular/core";
-import { FormsModule } from "@angular/forms";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { PrimengModule } from "./app.primeng.module";
 
 @NgModule({
   imports: [],
   exports : [
     PrimengModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule,
   ],
-  declarations: []
+  declarations: [
+  ]
 })
 export class AppComponentsModule {}

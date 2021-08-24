@@ -48,6 +48,7 @@ export class RouteStateService {
       routeStates.push(routeState);
       this.saveToStorage(routeStates);
       this.navigate(routeState.path);
+
   }
 
   /**
@@ -66,10 +67,10 @@ export class RouteStateService {
    * @param id load route route id
    */
   loadById(id: number) {
-      var results: { id: number; }[] = [];
+      var results;
       var isFound = false;
       var routeStates = this.getFromStorage();
-      routeStates.forEach((route: { id: number; }) => {
+      routeStates.forEach((route: RouteState) => {
           if (isFound) {
               return;
           }

@@ -2,51 +2,53 @@
   <div class="p-col">
 
     <div class="p-grid p-jc-center">
-      <div class="p-col-3">
+      <div class="p-col-4" style="width: 400px;">
+
+        <div class="p-row">
+          <h1 class="" style="text-align: center;">
+            GLOBAL &emsp; BANK
+          </h1>
+        </div>
+
+        <div class="p-row">
+          <form (ngSubmit)="onSubmitForm()">
+            <p-card header="Connection" subheader="Veuillez saisir vos identifiants"
+              styleClass="p-card-shadow p-shadow-6" >
+              <ng-template pTemplate="header" style="background-color: darkcyan; height: 60px;">
+
+              </ng-template>
+              <br />
+
+              <div class="p-fluid">
+
+                <span class="p-float-label">
+                  <input id="login" type="text" pInputText [(ngModel)]="user.login" name="login">
+                  <label for="login">Nom d'utilisateur</label>
+                </span>
 
 
+                <span class="p-float-label" style="margin-top: 25px; width: 100%;">
+                  <p-password [toggleMask]="true" [feedback]="false" [(ngModel)]="user.password" name="password">
+                  </p-password>
+                  <label for="password">Mot de passe</label>
+                </span>
+              </div>
 
-        <h1 class="" style="text-align: center;">
-          B a n K
-        </h1>
-
-        <form (ngSubmit)="onSubmitForm()">
-          <p-card header="Connection" subheader="Veuillez saisir vos identifiants" [style]="{width: '360px'}"
-            styleClass="p-card-shadow p-shadow-6">
-            <ng-template pTemplate="header" style="background-color: darkcyan; height: 60px;">
-
-            </ng-template>
-            <br />
-
-            <div class="p-fluid">
-
-              <span class="p-float-label">
-                <input id="login" type="text" pInputText [(ngModel)]="user.login" name="login" >
-                <label for="login">Nom d'utilisateur</label>
-              </span>
-
-
-              <span class="p-float-label" style="margin-top: 25px; width: 100%;">
-                <p-password [toggleMask]="true" [feedback]="false" [(ngModel)]="user.password" name="password"></p-password>
-                <label for="password">Mot de passe</label>
-              </span>
-            </div>
-
-            <ng-template pTemplate="footer">
-              <div class="p-grid p-jc-center">
-                <div class="p-col-6">
-                  <div class="p-fluid">
-                    <p-button label="Se Connecter" icon="pi pi-sign-in" type="submit"></p-button>
+              <ng-template pTemplate="footer">
+                <div class="p-grid p-jc-center">
+                  <div class="p-col-6">
+                    <div class="p-fluid">
+                      <p-button label="Se Connecter" icon="pi pi-sign-in" type="submit"></p-button>
+                    </div>
                   </div>
                 </div>
-              </div>
-            </ng-template>
-          </p-card>
-        </form>
+              </ng-template>
+            </p-card>
+          </form>
+        </div>
+
       </div>
     </div>
 
   </div>
 </div>
-
-

@@ -85,6 +85,10 @@
               "browserTarget": "banque:build:development"
             }
           },
+          "options": {
+            "browserTarget": "banque:build",
+            "proxyConfig": "src/proxy.conf.json"
+          },
           "defaultConfiguration": "development"
         },
         "extract-i18n": {

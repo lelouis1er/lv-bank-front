@@ -18,8 +18,10 @@ export class SessionService {
   * @param key
   */
   getItem(key: string): any {
-    var value = sessionStorage.getItem(key) != null ? sessionStorage.getItem(key) + '' : '';
-    return JSON.parse(value);
+    var value = sessionStorage.getItem(key);
+    if (value != null)
+      return JSON.parse(value);
+    else return null;
   }
 
   /**

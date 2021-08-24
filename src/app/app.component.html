@@ -1,7 +1,8 @@
 <div class="ui-fluid ng-main" >
-  <p-toast position="bottom-right"></p-toast>
-  <div [class.hidden]="!showLoader" class="np-loader">
+  <p-toast position="bottom-center"></p-toast>
+  <div [class.hidden]="showLoader == false" [hidden]="showLoader == false" class="np-loader">
       <p-progressSpinner strokeWidth="5"></p-progressSpinner>
   </div>
   <router-outlet></router-outlet>
 </div>
+
