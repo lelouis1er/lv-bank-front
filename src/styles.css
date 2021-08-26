@@ -26,6 +26,8 @@ li {
   list-style-type: none;
 }
 
+a {text-decoration: none;}
+
 .ng-main {
   background-color: var(--main-background);
   height: 100%;
@@ -46,7 +48,7 @@ li {
 
 .ng-header .logo {
   height: 50px;
-  padding: 0px 15px 0px 15px;
+  padding: 0px 5px 0px 5px;
   color: var(--blue-600);
   line-height: 1.8;
   font-weight: bold;
@@ -77,6 +79,24 @@ li {
   color: #000000;
 }
 
+.width-100 {
+  width: 100px;
+}
+.width-200 {
+  width: 200px;
+}.width-250{
+  width: 250px;
+}
+.width-300 {
+  width: 300px;
+}
+.width-400 {
+  width: 400px;
+}
+.width-40{
+  width: 40%;
+}
+
 .ng-footer div {
   text-align: center;
   padding: 10px;
@@ -86,7 +106,18 @@ li {
   overflow: auto;
   height: calc(100% - 100px);
   padding: 10px;
-  padding-left: 240px;
+
+}
+
+.main-btn{
+  width: 100%;
+  text-align: center;
+  font-size: 2.5rem;
+  flex-direction: column;
+}
+.main-btn span.pi {
+  font-size: 10rem;
+  margin-bottom: 15px;
 }
 
 .hidden-menu-content {
@@ -166,7 +197,7 @@ li {
   text-align: center;
   cursor: pointer;
   height: 50px;
-  width: 90px;
+  width: 50px;
   background-color: var(--menubar-background);
 }
 

@@ -13,9 +13,8 @@ export class TemplateComponent implements OnInit {
 
   constructor(
     private menuDataService: MenuDataService,
-    private applicationStateService: ApplicationStateService) {
-
-  }
+    private applicationStateService: ApplicationStateService)
+  {}
 
   ngOnInit(): void {
     var that = this;
@@ -33,8 +32,6 @@ export class TemplateComponent implements OnInit {
   }
 
   ngOnDestroy(): void {
-    //Called once, before the instance is destroyed.
-    //Add 'implements OnDestroy' to the class.
     this.menuDataService.toogleMenuBar.observers.forEach ( function (element) {
       element.complete();
     });

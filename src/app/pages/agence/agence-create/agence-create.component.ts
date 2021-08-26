@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { Agence } from 'src/app/models/agence.model';
 import { AgenceService } from 'src/app/services/crm/agence.service';
 import { RouteStateService } from 'src/app/services/route-state.service';
+import { ToastService } from 'src/app/services/toast.service';
 
 @Component({
   selector: 'app-agence-create',
@@ -17,7 +18,8 @@ export class AgenceCreateComponent implements OnInit {
   constructor(private _formBuilder : FormBuilder,
               private _agenceService : AgenceService,
               private _routeStateService : RouteStateService,
-              private _router : Router) { }
+              private _router : Router,
+              private toastService : ToastService) { }
 
   ngOnInit(): void {
     this.initForm();
@@ -35,7 +37,7 @@ export class AgenceCreateComponent implements OnInit {
     })
   }
 
-  on_submit () {
+  on_submit () {/*
     const valeursForm = this.agenceForm.value;
     console.log(valeursForm);
     const agence = new Agence(valeursForm['code'],
@@ -52,10 +54,11 @@ export class AgenceCreateComponent implements OnInit {
       (value) => {
         console.log("opération éfectué : " + value);
       }, (error) => {
+        this.toastService.addSingle('error', '', 'Une erreur s\'est produite');
         console.log("OUPS une erreur : " + error);
       }
     );
-    this.link_retour();
+    this.link_retour();*/
   }
 
   link_retour() {

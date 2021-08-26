@@ -60,4 +60,8 @@ export class NavbarComponent implements OnInit {
     this.sessionService.setItem("selected-theme", theme);
   }
 
+  backToHome () {
+    this.router.navigateByUrl('/main/dashboard');
+  }
+
 }

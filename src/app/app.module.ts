@@ -17,7 +17,6 @@ import { AppComponentsModule } from './app.components.module';
 import { TemplateComponent } from './components/template.component';
 import { UserIdleModule } from 'angular-user-idle';
 import { AuthGarde } from './gards/auth.garde';
-import { HeaderSectionComponent } from './components/header-section/header-section.component';
 
 @NgModule({
   declarations: [

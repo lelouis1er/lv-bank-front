@@ -19,8 +19,8 @@ const routes: Routes = [
         canActivate: [AuthGarde]
       },
       {
-        path : 'crm/agence',
-        loadChildren : () => import('src/app/pages/agence/agence.module').then(m=>AgenceModule),
+        path : 'crm',
+        loadChildren : () => import('src/app/pages/crm/crm.module').then(m => m.CrmModule),
         canActivate:[AuthGarde]
       }
     ]

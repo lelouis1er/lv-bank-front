@@ -1,4 +1,4 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
 import { Agence } from 'src/app/models/agence.model';
@@ -16,8 +16,8 @@ const optionReq = {
 export class AgenceService {
 
   agenceSubject = new Subject<any[]>();
-
-  list_agences : any[] = [];
+  list_agences : Agence[] = [];
+  params = new HttpParams();
 
   constructor(private http : HttpClient) { }
 
@@ -27,7 +27,7 @@ export class AgenceService {
 
   // retourne toutes les agences agence
   getAll() {
-    this.http.get<any[]>(`${crmUrl}/agences/all`, optionReq).subscribe(
+    this.http.get<Agence[]>(`${crmUrl}/agences/all`, optionReq).subscribe(
       (value) => {
         this.list_agences = value;
         this.emitAgenceSubject();
@@ -38,15 +38,13 @@ export class AgenceService {
   }
 
   findByAgenceCode (code : string) {
-    return this.http.get(`${crmUrl}/agences/getAgence/`, {
-      params : {code}
-    });
+    this.params.append('code', code);
+    return this.http.get(`${crmUrl}/agences/getAgence/`, {}).toPromise();
   }
 
   deleteAgenceBycode (code : string) {
-    this.http.delete(`${crmUrl}/agences/delete/`, {
-      params : {code}
-    });
+    this.params.append('code', code);
+    this.http.delete(`${crmUrl}/agences/delete/`, {params : this.params});
     this.getAll();
   }
 

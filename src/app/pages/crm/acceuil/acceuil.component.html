@@ -1,0 +1,30 @@
+<app-header-section [titre]="'Start Page'" [retour]="false"></app-header-section>
+
+<div class="p-row">
+  <div class="p-md-12">
+    <p-menubar>
+      <ng-template pTemplate="start">
+
+        <p-dropdown [options]="list_agences" [(ngModel)]="agence" placeholder="Choose brand " optionLabel="aglib"
+          optionLabel="Choose Brand" [virtualScroll]="true" [filter]="true" filterBy="agcod" styleClass="width-250">
+        </p-dropdown>
+
+      </ng-template>
+
+      <ng-template pTemplate="end">
+        <p-button icon="pi pi-plus" label="New"></p-button>
+      </ng-template>
+
+    </p-menubar>
+  </div>
+</div>
+
+<br />
+
+<div class="p-row">
+  <div class="p-col-12">
+    <p-card [style]="{width: 'width'}" styleClass="styleClass">
+
+    </p-card>
+  </div>
+</div>

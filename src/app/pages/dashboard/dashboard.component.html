@@ -1,1 +1,35 @@
-<h1> Bienvenu </h1>
+<app-header-section [titre]="'MENU'"></app-header-section>
+
+<br />
+
+<div class="p-row">
+  <div class="p-col-12">
+
+    <div class="p-d-flex p-flex-column p-flex-md-row">
+
+      <div class="p-md-4">
+        <p-button type="button"
+                  icon="pi pi-cog"
+                  styleClass="p-button-outlined p-button-secondary main-btn"
+                  label="Settings" ></p-button>
+      </div>
+
+      <div class="p-md-4">
+        <p-button type="button"
+                  icon="pi pi-lock"
+                  styleClass="p-button-raised p-button-secondary main-btn"
+                  label="Security" ></p-button>
+      </div>
+
+      <div class="p-md-4">
+          <p-button type="button"
+                    icon="pi pi-users"
+                    styleClass="p-button-raised p-button-secondary main-btn"
+                    label="CRM"
+                    (click)="linkTo_crm()"></p-button>
+      </div>
+
+    </div>
+
+  </div>
+</div>

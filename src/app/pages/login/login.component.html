@@ -12,7 +12,7 @@
 
         <div class="p-row">
           <form (ngSubmit)="onSubmitForm()">
-            <p-card header="Connection" subheader="Veuillez saisir vos identifiants"
+            <p-card header="Log in" subheader="Please enter your login details"
               styleClass="p-card-shadow p-shadow-6" >
               <ng-template pTemplate="header" style="background-color: darkcyan; height: 60px;">
 
@@ -23,14 +23,14 @@
 
                 <span class="p-float-label">
                   <input id="login" type="text" pInputText [(ngModel)]="user.login" name="login">
-                  <label for="login">Nom d'utilisateur</label>
+                  <label for="login">Username</label>
                 </span>
 
 
                 <span class="p-float-label" style="margin-top: 25px; width: 100%;">
                   <p-password [toggleMask]="true" [feedback]="false" [(ngModel)]="user.password" name="password">
                   </p-password>
-                  <label for="password">Mot de passe</label>
+                  <label for="password">Password</label>
                 </span>
               </div>
 
@@ -38,7 +38,7 @@
                 <div class="p-grid p-jc-center">
                   <div class="p-col-6">
                     <div class="p-fluid">
-                      <p-button label="Se Connecter" icon="pi pi-sign-in" type="submit"></p-button>
+                      <p-button label="Log in" icon="pi pi-sign-in" type="submit"></p-button>
                     </div>
                   </div>
                 </div>
