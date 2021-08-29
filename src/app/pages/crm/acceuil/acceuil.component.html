@@ -4,15 +4,16 @@
   <div class="p-md-12">
     <p-menubar>
       <ng-template pTemplate="start">
-
+        Brand :
         <p-dropdown [options]="list_agences" [(ngModel)]="agence" placeholder="Choose brand " optionLabel="aglib"
-          optionLabel="Choose Brand" [virtualScroll]="true" [filter]="true" filterBy="agcod" styleClass="width-250">
+          [virtualScroll]="true" [filter]="true" filterBy="aglib" styleClass="width-250"
+          (onChange)="on_dropdown_value_change()">
         </p-dropdown>
 
       </ng-template>
 
       <ng-template pTemplate="end">
-        <p-button icon="pi pi-plus" label="New"></p-button>
+        <p-button icon="pi pi-plus" label="New" (onClick)="new_customer()"></p-button>
       </ng-template>
 
     </p-menubar>
@@ -24,6 +25,205 @@
 <div class="p-row">
   <div class="p-col-12">
     <p-card [style]="{width: 'width'}" styleClass="styleClass">
+
+
+      <p-table #dt1 [value]="list_clients" [paginator]="true" [showCurrentPageReport]="true"
+        [rowsPerPageOptions]="[10,20,30,50,100]" [loading]="loading"
+        currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+        [globalFilterFields]="['agence','nom','prenom']" scrollDirection="both" [scrollable]="true" [rows]="10"
+        scrollHeight="400px" styleClass="p-mt-3">
+
+
+        <ng-template pTemplate="caption">
+          <div class="p-d-flex">
+            <button pButton label="Clear" class="p-button-outlined" icon="pi pi-filter-slash"
+              (click)="clear(dt1)"></button>
+            <span class="p-input-icon-left p-ml-auto">
+              <i class="pi pi-search"></i>
+              <input pInputText type="text" (input)="dt1.filterGlobal($event.returnValue, 'contains')"
+                placeholder="Search keyword" />
+            </span>
+          </div>
+        </ng-template>
+
+        <ng-template pTemplate="header">
+          <tr>
+            <th style="min-width:200px" pFrozenColumn="true">agence</th>
+            <th style="min-width:200px" pFrozenColumn="true">nom</th>
+            <th style="min-width:200px">prenom</th>
+            <th style="min-width:200px">adresse1</th>
+            <th style="min-width:200px">adresse2</th>
+            <th style="min-width:200px">adresse3</th>
+            <th style="min-width:200px">bp</th>
+            <th style="min-width:200px">ville</th>
+            <th style="min-width:200px">pays</th>
+            <th style="min-width:200px">typeResident</th>
+            <th style="min-width:200px">agentEco</th>
+            <th style="min-width:200px">activiteEco</th>
+            <th style="min-width:200px">natClient</th>
+            <th style="min-width:200px">libNatClient</th>
+            <th style="min-width:200px">natJuridique</th>
+            <th style="min-width:200px">qualite</th>
+            <th style="min-width:200px">titre</th>
+            <th style="min-width:200px">typeClient</th>
+            <th style="min-width:200px">catClient</th>
+            <th style="min-width:200px">libAgence</th>
+            <th style="min-width:200px">dateNaissance</th>
+            <th style="min-width:200px">lieuNaissance</th>
+            <th style="min-width:200px">telephone1</th>
+            <th style="min-width:200px">telephone2</th>
+            <th style="min-width:200px">telephone3</th>
+            <th style="min-width:200px">telex</th>
+            <th style="min-width:200px">fax</th>
+            <th style="min-width:200px">groupe</th>
+            <th style="min-width:200px">nationalite</th>
+            <th style="min-width:200px">natBeac</th>
+            <th style="min-width:200px">nomJeuneFille</th>
+            <th style="min-width:200px">sigle</th>
+            <th style="min-width:200px">raisonSociale</th>
+            <th style="min-width:200px">siegeSocial</th>
+            <th style="min-width:200px">registreCce</th>
+            <th style="min-width:200px">nomAbrege</th>
+            <th style="min-width:200px">numContrib</th>
+            <th style="min-width:200px">dateCreatSoc</th>
+            <th style="min-width:200px">objetSocial</th>
+            <th style="min-width:200px">libNatBeac</th>
+            <th style="min-width:200px">libAgentEco</th>
+            <th style="min-width:200px">libActiviteEco</th>
+            <th style="min-width:200px">libNatJuridique</th>
+            <th style="min-width:200px">libVille</th>
+            <th style="min-width:200px">libTitre</th>
+            <th style="min-width:200px">libNationalite</th>
+            <th style="min-width:200px">libSiegeSocial</th>
+            <th style="min-width:200px">precisNais</th>
+            <th style="min-width:200px">dateCreation</th>
+            <th style="min-width:200px">nomJumelle</th>
+            <th style="min-width:200px">employe</th>
+            <th style="min-width:200px">nomemploye</th>
+            <th style="min-width:200px">profession</th>
+            <th style="min-width:200px">deathdate</th>
+            <th style="min-width:200px">adhesiondate</th>
+            <th style="min-width:200px">datedeclaration</th>
+            <th style="min-width:200px">dateTransfert</th>
+            <th style="min-width:200px">integritystatus</th>
+            <th style="min-width:200px">custRelCode</th>
+            <th style="min-width:200px">custRelName</th>
+            <th style="min-width:200px">client</th>
+            <th style="min-width:200px">gestionnaire</th>
+            <th style="min-width:200px">email</th>
+            <th style="min-width:200px">ebnkSub</th>
+            <th style="min-width:200px">dteIssueCNI</th>
+            <th style="min-width:200px">placeIssueCNI</th>
+            <th style="min-width:200px">customerRemark</th>
+            <th style="min-width:200px">ancienmatricule</th>
+            <th style="min-width:200px">companygrpe</th>
+            <th style="min-width:200px">serie</th>
+            <th style="min-width:200px">deathStatus</th>
+            <th style="min-width:200px">nomPere</th>
+            <th style="min-width:200px">nomMere</th>
+            <th style="min-width:200px">dteExpCNI</th>
+            <th style="min-width:200px">nomManager</th>
+            <th style="min-width:200px">nomContact</th>
+            <th style="min-width:200px">adresseContact</th>
+            <th style="min-width:200px">telContact</th>
+            <th style="min-width:200px">activatecollect</th>
+            <th style="min-width:200px">firstlogincollect</th>
+            <th style="min-width:200px">password</th>
+            <th style="min-width:200px">tabmemberbenefs</th>
+            <th style="min-width:200px">signataires</th>
+            <th style="min-width:200px">cnipass</th>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-client>
+          <tr>
+            <td style="min-width:200px" pFrozenColumn="true">{{client.agence}}</td>
+            <td style="min-width:200px" pFrozenColumn="true">{{client.nom}}</td>
+            <td style="min-width:200px">{{client.prenom}}</td>
+            <td style="min-width:200px">{{client.adresse1}}</td>
+            <td style="min-width:200px">{{client.adresse2}}</td>
+            <td style="min-width:200px">{{client.adresse3}}</td>
+            <td style="min-width:200px">{{client.bp}}</td>
+            <td style="min-width:200px">{{client.ville}}</td>
+            <td style="min-width:200px">{{client.pays}}</td>
+            <td style="min-width:200px">{{client.typeResident}}</td>
+            <td style="min-width:200px">{{client.agentEco}}</td>
+            <td style="min-width:200px">{{client.activiteEco}}</td>
+            <td style="min-width:200px">{{client.natClient}}</td>
+            <td style="min-width:200px">{{client.libNatClient}}</td>
+            <td style="min-width:200px">{{client.natJuridique}}</td>
+            <td style="min-width:200px">{{client.qualite}}</td>
+            <td style="min-width:200px">{{client.titre}}</td>
+            <td style="min-width:200px">{{client.typeClient}}</td>
+            <td style="min-width:200px">{{client.catClient}}</td>
+            <td style="min-width:200px">{{client.libAgence}}</td>
+            <td style="min-width:200px">{{client.dateNaissance}}</td>
+            <td style="min-width:200px">{{client.lieuNaissance}}</td>
+            <td style="min-width:200px">{{client.telephone1}}</td>
+            <td style="min-width:200px">{{client.telephone2}}</td>
+            <td style="min-width:200px">{{client.telephone3}}</td>
+            <td style="min-width:200px">{{client.telex}}</td>
+            <td style="min-width:200px">{{client.fax}}</td>
+            <td style="min-width:200px">{{client.groupe}}</td>
+            <td style="min-width:200px">{{client.nationalite}}</td>
+            <td style="min-width:200px">{{client.natBeac}}</td>
+            <td style="min-width:200px">{{client.nomJeuneFille}}</td>
+            <td style="min-width:200px">{{client.sigle}}</td>
+            <td style="min-width:200px">{{client.raisonSociale}}</td>
+            <td style="min-width:200px">{{client.siegeSocial}}</td>
+            <td style="min-width:200px">{{client.registreCce}}</td>
+            <td style="min-width:200px">{{client.nomAbrege}}</td>
+            <td style="min-width:200px">{{client.numContrib}}</td>
+            <td style="min-width:200px">{{client.dateCreatSoc}}</td>
+            <td style="min-width:200px">{{client.objetSocial}}</td>
+            <td style="min-width:200px">{{client.libNatBeac}}</td>
+            <td style="min-width:200px">{{client.libAgentEco}}</td>
+            <td style="min-width:200px">{{client.libActiviteEco}}</td>
+            <td style="min-width:200px">{{client.libNatJuridique}}</td>
+            <td style="min-width:200px">{{client.libVille}}</td>
+            <td style="min-width:200px">{{client.libTitre}}</td>
+            <td style="min-width:200px">{{client.libNationalite}}</td>
+            <td style="min-width:200px">{{client.libSiegeSocial}}</td>
+            <td style="min-width:200px">{{client.precisNais}}</td>
+            <td style="min-width:200px">{{client.dateCreation}}</td>
+            <td style="min-width:200px">{{client.nomJumelle}}</td>
+            <td style="min-width:200px">{{client.employe}}</td>
+            <td style="min-width:200px">{{client.nomemploye}}</td>
+            <td style="min-width:200px">{{client.profession}}</td>
+            <td style="min-width:200px">{{client.deathdate}}</td>
+            <td style="min-width:200px">{{client.adhesiondate}}</td>
+            <td style="min-width:200px">{{client.datedeclaration}}</td>
+            <td style="min-width:200px">{{client.dateTransfert}}</td>
+            <td style="min-width:200px">{{client.integritystatus}}</td>
+            <td style="min-width:200px">{{client.custRelCode}}</td>
+            <td style="min-width:200px">{{client.custRelName}}</td>
+            <td style="min-width:200px">{{client.client}}</td>
+            <td style="min-width:200px">{{client.gestionnaire}}</td>
+            <td style="min-width:200px">{{client.email}}</td>
+            <td style="min-width:200px">{{client.ebnkSub}}</td>
+            <td style="min-width:200px">{{client.dteIssueCNI}}</td>
+            <td style="min-width:200px">{{client.placeIssueCNI}}</td>
+            <td style="min-width:200px">{{client.customerRemark}}</td>
+            <td style="min-width:200px">{{client.ancienmatricule}}</td>
+            <td style="min-width:200px">{{client.companygrpe}}</td>
+            <td style="min-width:200px">{{client.serie}}</td>
+            <td style="min-width:200px">{{client.deathStatus}}</td>
+            <td style="min-width:200px">{{client.nomPere}}</td>
+            <td style="min-width:200px">{{client.nomMere}}</td>
+            <td style="min-width:200px">{{client.dteExpCNI}}</td>
+            <td style="min-width:200px">{{client.nomManager}}</td>
+            <td style="min-width:200px">{{client.nomContact}}</td>
+            <td style="min-width:200px">{{client.adresseContact}}</td>
+            <td style="min-width:200px">{{client.telContact}}</td>
+            <td style="min-width:200px">{{client.activatecollect}}</td>
+            <td style="min-width:200px">{{client.firstlogincollect}}</td>
+            <td style="min-width:200px">{{client.password}}</td>
+            <td style="min-width:200px">{{client.tabmemberbenefs}}</td>
+            <td style="min-width:200px">{{client.signataires}}</td>
+            <td style="min-width:200px">{{client.cnipass}}</td>
+          </tr>
+        </ng-template>
+      </p-table>
+
 
     </p-card>
   </div>

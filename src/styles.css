@@ -97,6 +97,14 @@ a {text-decoration: none;}
   width: 40%;
 }
 
+:host ::ng-deep  .p-frozen-column {
+  font-weight: bold;
+}
+:host ::ng-deep .p-datatable-frozen-tbody {
+  font-weight: bold;
+}
+
+
 .ng-footer div {
   text-align: center;
   padding: 10px;

@@ -11,6 +11,11 @@ const routes : Routes = [
     path : 'start',
     loadChildren : () => import('src/app/pages/crm/acceuil/acceuil.module').then(m => m.AcceuilModule),
     canActivate : [AuthGarde]
+  },
+  {
+    path: 'customer',
+    loadChildren : () => import('src/app/pages/crm/customer/customer.module').then(m=>m.CustomerModule),
+    canActivate : [AuthGarde]
   }
 ]
 

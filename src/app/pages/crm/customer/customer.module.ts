@@ -1,18 +1,18 @@
 import { CommonModule } from "@angular/common";
 import { NgModule } from "@angular/core";
 import { AppComponentsModule } from "src/app/app.components.module";
-import { CrmComponent } from "./crm.component";
-import { CrmRoutingModule } from "./crm.routing";
+import { CustomerComponent } from "./customer.component";
+import { CustomerRoutingModule } from "./customer.routing";
 
 @NgModule({
-  imports : [
+  imports: [
     CommonModule,
     AppComponentsModule,
-    CrmRoutingModule
+    CustomerRoutingModule
   ],
   exports : [],
   declarations : [
-    CrmComponent
+    CustomerComponent
   ]
 })
-export class CrmModule{}
+export class CustomerModule{}

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Table } from 'primeng/table';
 import { Subscription } from 'rxjs';
 import { Agence } from 'src/app/models/agence.model';
 import { ClientBnk } from 'src/app/models/clientBnk.model';
@@ -17,6 +18,7 @@ export class AcceuilComponent implements OnInit {
   list_agences: Agence[] = [];
   agenceSubcribe!: Subscription;
   agence!: Agence;
+  loading: boolean = true;
 
   list_clients: ClientBnk[] = [];
   clienBnkSubscribe!: Subscription;
@@ -46,12 +48,22 @@ export class AcceuilComponent implements OnInit {
 
 
     this._agenceService.getAll();
-    console.log("liste des agences : " + this.list_agences);
-    console.log("type de :" + typeof(this.list_agences))
+    this.loading = false;
   }
 
   on_dropdown_value_change() {
+    this.loading = true;
+    console.log("chargeent des clients");
     this._clienService.findByAgence(this.agence.agcod);
+    this.loading = false;
+  }
+
+  clear(table: Table) {
+    table.clear();
+  }
+
+  new_customer () {
+    this._routeStateService.add("new customer", "/main/crm/customer/new", null, false);
   }
 
 }
