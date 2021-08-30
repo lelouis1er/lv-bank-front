@@ -28,6 +28,10 @@ li {
 
 a {text-decoration: none;}
 
+.danger {
+  color: red;
+}
+
 .ng-main {
   background-color: var(--main-background);
   height: 100%;

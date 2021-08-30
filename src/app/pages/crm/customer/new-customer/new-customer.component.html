@@ -1,0 +1,112 @@
+<app-header-section [titre]="'Create a new customer'" [description]="''" [retour]="true"></app-header-section>
+
+<div class="p-row">
+  <div class="p-md-12">
+
+  </div>
+</div>
+
+<br />
+
+
+<div class="p-row">
+  <div class="p-col-12">
+
+    <p-card [style]="{width: 'width'}" styleClass="styleClass">
+
+      <form [formGroup]="customerForm" (ngSubmit)="onFormSubmit()" >
+
+
+        <p-tabView>
+          <!-- Informations de base -->
+          <p-tabPanel>
+            <ng-template pTemplate="header">
+              Basic customer information  <span class="danger">*</span>
+            </ng-template>
+
+            <br />
+            <div class="p-fluid p-grid">
+              <div class="p-field p-col">
+                <label for="mat">Matricule <span class="danger">*</span></label>
+                  <input id="mat" type="text" pInputText name="mat" formControlName="mat" />
+              </div>
+            </div>
+
+            <div class="p-fluid p-formgrid p-grid">
+              <div class="p-field p-col">
+                <label for="typeClient">Customer type <span class="danger">*</span></label>
+                <p-dropdown [options]="customerType" id="typeClient" formControlName="typeClient"></p-dropdown>
+              </div>
+              <div class="p-field p-col">
+                <label for="typeResident">Resident <span class="danger">*</span></label>
+                <p-dropdown [options]="residentType" id="typeResident" formControlName="typeResident"></p-dropdown>
+              </div>
+              <div class="p-field p-col">
+                <label for="nantClient">Nationality <span class="danger">*</span></label>
+                <p-dropdown [options]="customerNat" id="natClient" formControlName="natClient"></p-dropdown>
+              </div>
+            </div>
+
+            <div class="p-grid p-fluid">
+              <div class="p-col p-field">
+                <label>Witness</label>
+                <input id="input" type="text" pInputText>
+              </div>
+            </div>
+
+            <div class="p-grid p-fluid">
+              <div class="p-col p-field">
+                <label>Beac Nat.</label>
+                <input id="input" type="text" pInputText formControlName="natBeac" [disabled]="true" />
+              </div>
+              <div class="p-col p-field">
+                <label for="">Beac Lib.</label>
+                <p-dropdown [options]="beacNatList" [(ngModel)]="beac" placeholder="Choose an institution" optionLabel="lib" [showClear]="true" (change)="onChooseBeacNat()" [ngModelOptions]="{standalone: true}"></p-dropdown>
+              </div>
+            </div>
+
+          </p-tabPanel>
+
+          <!-- type de client -->
+          <p-tabPanel>
+            <ng-template pTemplate="header">
+              Customer type <span class="danger">*</span>
+            </ng-template>
+
+            <br />
+
+          </p-tabPanel>
+
+
+          <!-- Informations supplementaires -->
+          <p-tabPanel>
+            <ng-template pTemplate="header">Additional Information</ng-template>
+
+            <br />
+
+          </p-tabPanel>
+
+        </p-tabView>
+
+
+        <hr />
+
+        <div class="p-row">
+          <div class="p-md-12">
+            <div class="p-grid p-jc-between">
+
+              <p-button type="reset" icon="pi pi-reset" label="Reset" styleClass="p-button-secondary"></p-button>
+
+              <p-button type="submit" icon="pi pi-check" label="save" [disabled]="customerForm.invalid"
+                styleClass="p-button-primary"></p-button>
+
+            </div>
+          </div>
+        </div>
+
+      </form>
+
+    </p-card>
+
+  </div>
+</div>

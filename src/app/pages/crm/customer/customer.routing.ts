@@ -3,7 +3,8 @@ import { RouterModule, Routes } from "@angular/router";
 
  const routes : Routes = [
    {
-     path:''
+     path:'new',
+     loadChildren : () => import('src/app/pages/crm/customer/new-customer/new-customer.module').then(m=>m.NewCustomerModule)
    }
  ];
 
