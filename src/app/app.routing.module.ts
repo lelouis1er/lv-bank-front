@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AgenceModule } from 'src/app/pages/agence/agence.module';
 import { TemplateComponent } from './components/template.component';
 import { AuthGarde } from './gards/auth.garde';
 
@@ -37,3 +36,4 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
+

@@ -42,6 +42,7 @@ export class ClientService {
       .subscribe(
         (data) => {
           this.list_client = data;
+          
           this.emitClientSubject();
         },
         (error) => {
