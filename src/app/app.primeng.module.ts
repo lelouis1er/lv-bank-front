@@ -2,6 +2,7 @@ import { NgModule } from "@angular/core";
 
 import { ButtonModule } from "primeng/button";
 import { BreadcrumbModule } from "primeng/breadcrumb"
+import { CalendarModule } from "primeng/calendar";
 import { CardModule } from "primeng/card";
 import { InputTextModule } from "primeng/inputtext";
 import { PasswordModule } from "primeng/password";
@@ -24,6 +25,7 @@ import { TabViewModule } from "primeng/tabview"
     ButtonModule,
     BreadcrumbModule,
     CardModule,
+    CalendarModule,
     DividerModule,
     DropdownModule,
     DynamicDialogModule,

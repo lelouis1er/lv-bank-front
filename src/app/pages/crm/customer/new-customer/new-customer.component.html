@@ -14,21 +14,21 @@
 
     <p-card [style]="{width: 'width'}" styleClass="styleClass">
 
-      <form [formGroup]="customerForm" (ngSubmit)="onFormSubmit()" >
+      <form [formGroup]="customerForm" (ngSubmit)="onFormSubmit()">
 
 
         <p-tabView>
           <!-- Informations de base -->
           <p-tabPanel>
             <ng-template pTemplate="header">
-              Basic customer information  <span class="danger">*</span>
+              Basic customer information <span class="danger">*</span>
             </ng-template>
 
             <br />
             <div class="p-fluid p-grid">
               <div class="p-field p-col">
                 <label for="mat">Matricule <span class="danger">*</span></label>
-                  <input id="mat" type="text" pInputText name="mat" formControlName="mat" />
+                <input id="mat" type="text" pInputText name="mat" formControlName="mat" />
               </div>
             </div>
 
@@ -57,11 +57,13 @@
             <div class="p-grid p-fluid">
               <div class="p-col p-field">
                 <label>Beac Nat.</label>
-                <input id="input" type="text" pInputText formControlName="natBeac" [disabled]="true" />
+                <input id="input" type="text" pInputText formControlName="natBeac" />
               </div>
               <div class="p-col p-field">
                 <label for="">Beac Lib.</label>
-                <p-dropdown [options]="beacNatList" [(ngModel)]="beac" placeholder="Choose an institution" optionLabel="lib" [showClear]="true" (change)="onChooseBeacNat()" [ngModelOptions]="{standalone: true}"></p-dropdown>
+                <p-dropdown [options]="beacNatList" [(ngModel)]="beacNat" placeholder="Choose an institution"
+                  optionLabel="lib" [showClear]="true" (onChange)="onChooseBeacNat()"
+                  [ngModelOptions]="{standalone: true}"></p-dropdown>
               </div>
             </div>
 
@@ -70,10 +72,109 @@
           <!-- type de client -->
           <p-tabPanel>
             <ng-template pTemplate="header">
-              Customer type <span class="danger">*</span>
+              Customer type <sub> ({{ getCustomerType() }})</sub>
+              <span class="danger">*</span>
             </ng-template>
 
             <br />
+
+            <div *ngIf="checkTypeClient('Physical person')">
+
+              <div class="p-grid p-fluid">
+                <div class="p-col p-field">
+                  <label>Quality<span class="danger">*</span></label>
+                  <p-dropdown [options]="customerQuality" id="natClient" formControlName="qualite"></p-dropdown>
+                </div>
+                <div class="p-col p-field">
+                  <label for="">Title<span class="danger">*</span></label>
+                  <p-dropdown [options]="customerTitle" id="natClient" formControlName="libTitre"></p-dropdown>
+                </div>
+              </div>
+
+              <div class="p-grid p-fluid">
+                <div class="p-col p-field">
+                  <label>First Name<span class="danger">*</span></label>
+                  <input id="input" type="text" pInputText formControlName="nom" />
+                </div>
+                <div class="p-col p-field">
+                  <label for="">Last Name</label>
+                  <input id="input" type="text" pInputText formControlName="prenom" />
+                </div>
+              </div>
+
+              <div class="p-grid p-fluid">
+                <div class="p-col p-field">
+                  <label>Birth Date<span class="danger">*</span></label>
+                  <p-calendar id="input" inputId="basic" formControlName="dateNaissance" ></p-calendar>
+                </div>
+                <div class="p-col p-field">
+                  <label for="">Birth Prec..<span class="danger">*</span></label>
+                  <p-dropdown [options]="precisNais" id="natClient" formControlName="precisNaiss"></p-dropdown>
+                </div>
+              </div>
+
+              <div class="p-grid p-fluid">
+                <div class="p-col p-field">
+                  <label>Place<span class="danger">*</span></label>
+                  <input type="text" pInputText id="input" formControlName="lieuNaissance" />
+                </div>
+              </div>
+
+              <div class="p-grid p-fluid">
+                <div class="p-col p-field">
+                  <label>Father Name</label>
+                  <input id="input" type="text" pInputText formControlName="nomPere" />
+                </div>
+                <div class="p-col p-field">
+                  <label for="">Mother Name</label>
+                  <input id="input" type="text" pInputText formControlName="nomMere" />
+                </div>
+              </div>
+
+              <div class="p-grid p-fluid">
+                <div class="p-col p-field">
+                  <label>Maiden Name</label>
+                  <input id="input" type="text" pInputText formControlName="nomJeuneFille" />
+                </div>
+                <div class="p-col p-field">
+                  <label for="">Customer Category<span class="danger">*</span></label>
+                  <p-dropdown [options]="customerCategory" id="natClient" formControlName="catClient"></p-dropdown>
+                </div>
+              </div>
+
+              <div class="p-grid p-fluid">
+                <div class="p-col p-field">
+                  <label>Profession<span class="danger">*</span></label>
+                  <input id="input" type="text" pInputText formControlName="profession" />
+                </div>
+                <div class="p-col p-field">
+                  <label for="">NID/Pport<span class="danger">*</span></label>
+                  <input id="input" type="text" pInputText formControlName="cnipass" />
+                </div>
+              </div>
+
+              <div class="p-grid p-fluid">
+                <div class="p-col p-field">
+                  <label>NID issu At</label>
+                  <input id="input" type="text" pInputText formControlName="placeIssuCni" />
+                </div>
+                <div class="p-col p-field">
+                  <label for="">NID issu date</label>
+                  <p-calendar id="input" inputId="basic" formControlName="dateIssuCni" ></p-calendar>
+                </div>
+                <div class="p-col p-field">
+                  <label for="">NID expire date</label>
+                  <p-calendar id="input" inputId="basic" formControlName="dateExpCni" ></p-calendar>
+                </div>
+              </div>
+
+            </div>
+
+
+            <div *ngIf="checkTypeClient('Corporation')">
+              entreprise
+
+            </div>
 
           </p-tabPanel>
 
@@ -83,6 +184,7 @@
             <ng-template pTemplate="header">Additional Information</ng-template>
 
             <br />
+
 
           </p-tabPanel>
 

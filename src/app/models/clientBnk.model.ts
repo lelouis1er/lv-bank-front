@@ -60,7 +60,7 @@ export class ClientBnk {
                public integritystatus: string,
                public custRelCode: string,
                public custRelName: string,
-               public client: string,
+               public client: string, // PK
                public gestionnaire: string,
                public email: string,
                public ebnkSub: string,

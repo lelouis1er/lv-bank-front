@@ -31,18 +31,17 @@ export class ClientService {
       );
   }
 
-  findByClientId(clientId: string) {
+  findByClientId(clientId: string) :Promise<ClientBnk>{
     this.params.append('client', clientId);
-    return this._http.get(`${crmUrl}/clients/details`, {params: this.params});
+    return this._http.get<ClientBnk>(`${crmUrl}/clients/details`, {params: this.params}).toPromise();
   }
 
   findByAgence(agenceId: string) {
     this.params.append('agence', agenceId);
-    return this._http.get<ClientBnk[]>(`${crmUrl}/client/getAgence/`, { params: this.params })
+    this._http.get<ClientBnk[]>(`${crmUrl}/clients/getAgence/`, { params: this.params })
       .subscribe(
         (data) => {
           this.list_client = data;
-          
           this.emitClientSubject();
         },
         (error) => {

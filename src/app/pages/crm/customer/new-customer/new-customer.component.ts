@@ -1,3 +1,4 @@
+import { ThisReceiver } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
 import { from } from 'rxjs';
@@ -15,13 +16,31 @@ export class NewCustomerComponent implements OnInit {
 
   residentType: string[] = ['Resident', 'Not resident'];
   customerType: string[] = ['Physical person', 'Corporation'];
+  customerCategory: string[] = ['Vip'];
   customerNat: string[] = ['Cameroonian'];
+  customerQuality: string[] = ['Quality 1'];
+  customerTitle: string[] = ['Aucun'];
+  precisNais: string[] = ['D'];
 
   beacNatList: any[] = [
     { nat: '11', lib: 'Particuliers Nationaux' },
     { nat: '12', lib: 'Test' }
   ];
-  beac!: any;
+  beacNat!: any;
+
+  cobacList: any[] = [
+    {nat: '1101', lib: 'B E A C'},
+    {nat: '1102', lib: 'Autres institutions D\'em...'},
+    {nat: '1201', lib: 'B D E A C'},
+    {nat: '1311', lib: 'Banques Associées'},
+    {nat: '1312', lib: 'Banques non Associées'}
+  ];
+  cobac!: any;
+
+  natureJuridiqueList: any[] = [
+    {num: '10', lib: 'Banque'}
+  ];
+  natJuridique!: any;
 
   constructor(
     private _formBuilder: FormBuilder,
@@ -29,7 +48,9 @@ export class NewCustomerComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.beac = this.beacNatList[0];
+    this.beacNat = this.beacNatList[0];
+    this.cobac = this.cobacList[0];
+    this.natJuridique = this.natureJuridiqueList[0];
 
     this.initForm();
   }
@@ -40,8 +61,31 @@ export class NewCustomerComponent implements OnInit {
       typeClient: [this.customerType[0], [Validators.required]],
       typeResident: [this.residentType[0], [Validators.required]],
       natClient: [this.customerNat[0], Validators.required],
-      natBeac: [this.beac.nat, Validators.required],
-      libNatBeac: [this.beac.lib, Validators.required]
+      natBeac: [this.beacNat.nat, Validators.required],
+      libNatBeac: [this.beacNat.lib, Validators.required],
+      qualite: [this.customerQuality[0], Validators.required],
+      libTitre: [this.customerTitle[0], Validators.required],
+      nom: ['', Validators.required],
+      prenom: [''],
+      dateNaissance: [null, Validators.required],
+      precisNaiss: [this.precisNais[0], Validators.required],
+      lieuNaissance: ['', Validators.required],
+      nomPere: [''],
+      nomMere: [''],
+      nomJeuneFille: [''],
+      catClient: [this.customerCategory[0], Validators.required],
+      profession: ['', Validators.required],
+      cnipass: ['', Validators.required],
+      placeIssuCni: [''],
+      dateIssuCni: [null],
+      dateExpCni: [null],
+      nomAbrege: [''],
+      nomJumelle: [''],
+      raisonSociale: ['', Validators.required],
+      siegeSocial: ['', Validators.required],
+      telex: [''],
+      numContrib: ['', Validators.required],
+      natJuridique: [this.natJuridique.num, Validators.required]
     });
   }
 
@@ -58,9 +102,18 @@ export class NewCustomerComponent implements OnInit {
   }
 
   onChooseBeacNat() {
-    console.log('Cangement de nature');
+    if (this.beacNat != null)
+      this.customerForm.patchValue({ natBeac: this.beacNat.nat, libNatBeac: this.beacNat.lib });
+    else
+      this.customerForm.patchValue({ natBeac: null, libNatBeac: null });
+  }
 
-    this.customerForm.setValue({ natBeac: this.beac.nat, libNatBeac: this.beac.lib });
+  checkTypeClient(value: string): boolean {
+    return (this.customerForm.value['typeClient'] === value);
+  }
+
+  getCustomerType():string {
+    return this.customerForm.value['typeClient'];
   }
 
 }
